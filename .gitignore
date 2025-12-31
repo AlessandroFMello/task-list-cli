@@ -2,3 +2,5 @@ node_modules
 dist
 
 DEVELOPMENT_CHECKLIST.md
+
+*-tasks.json

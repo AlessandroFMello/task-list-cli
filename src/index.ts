@@ -1,3 +1,5 @@
-#!/usr/bin/env node
+import { App } from "./app.js"
 
-console.log("Hello world!")
+const app = new App()
+
+app.loadTasks()
