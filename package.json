@@ -2,7 +2,7 @@
   "name": "task-tracker-cli",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,8 +11,9 @@
     "task": "dist/index.js"
   },
   "scripts": {
-    "build": "tsc",
-    "start": "ts-node src/index.ts"
+    "build": "tsc && node ./dist/helpers/add-shebang.js",
+    "start": "node --loader ts-node/esm src/index.ts",
+    "setup": "./build-link-file.sh"
   },
   "devDependencies": {
     "@types/node": "^25.0.3",
