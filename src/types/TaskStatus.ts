@@ -1,1 +1,1 @@
-export type TaskStatus = "in-progress" | "completed"
+export type TaskStatus = "todo" | "in-progress" | "completed"

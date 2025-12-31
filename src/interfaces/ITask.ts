@@ -1,4 +1,4 @@
-import { TaskStatus } from "../types/TaskStatus"
+import { TaskStatus } from "../types/TaskStatus.js"
 
 export interface ITask {
     id: number,

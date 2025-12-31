@@ -3,5 +3,5 @@ export type Command =
   | 'update'
   | 'delete'
   | 'mark-in-progress'
-  | 'mark-done'
+  | 'mark-completed'
   | 'list';

@@ -1,5 +1,5 @@
-import { Command } from "../types/Command";
-import { TaskStatus } from "../types/TaskStatus";
+import { Command } from "../types/Command.js";
+import { TaskStatus } from "../types/TaskStatus.js";
 
 export interface IParsedArgs {
   command: Command | null;      // The main command (or null if invalid/missing)
