@@ -11,7 +11,7 @@
     "task": "dist/index.js"
   },
   "scripts": {
-    "build": "tsc && node ./dist/helpers/add-shebang.js",
+    "build": "tsc && node ./dist/helpers/addShebang.js",
     "start": "node --loader ts-node/esm src/index.ts",
     "setup": "./build-link-file.sh"
   },

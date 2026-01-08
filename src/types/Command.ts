@@ -3,5 +3,9 @@ export type Command =
   | 'update'
   | 'delete'
   | 'mark-in-progress'
-  | 'mark-completed'
-  | 'list';
+  | 'mark-done'
+  | 'list'
+  | 'list-files'
+  | 'current-file'
+  | 'clear'
+  | 'set-file-date';

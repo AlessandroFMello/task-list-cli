@@ -1,9 +1,10 @@
-import { TaskStatus } from "../types/TaskStatus.js"
+import { UUID } from "node:crypto";
+import { TaskStatus } from "../types/TaskStatus.js";
 
 export interface ITask {
-    id: number,
+    uuid?: UUID,
     description: string,
-    status: TaskStatus,
-    createdAt: string,
-    updatedAt: string
+    status?: TaskStatus,
+    createdAt?: string,
+    updatedAt?: string
 }
