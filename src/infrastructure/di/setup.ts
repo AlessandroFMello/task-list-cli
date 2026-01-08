@@ -27,6 +27,7 @@ import { ListCommand } from "../../presentation/commands/ListCommand.js";
 import { ClearCommand } from "../../presentation/commands/ClearCommand.js";
 import { SetFileDateCommand } from "../../presentation/commands/SetFileDateCommand.js";
 import { ListFilesCommand } from "../../presentation/commands/ListFilesCommand.js";
+import { LsCommand } from "../../presentation/commands/LsCommand.js";
 import { CurrentFileCommand } from "../../presentation/commands/CurrentFileCommand.js";
 import { CommandRouter } from "../../presentation/cli/CommandRouter.js";
 import { CLI } from "../../presentation/cli/CLI.js";
@@ -77,6 +78,7 @@ export const DI_KEYS = {
   CLEAR_COMMAND: "clearCommand",
   SET_FILE_DATE_COMMAND: "setFileDateCommand",
   LIST_FILES_COMMAND: "listFilesCommand",
+  LS_COMMAND: "lsCommand",
   CURRENT_FILE_COMMAND: "currentFileCommand",
 } as const;
 
@@ -246,6 +248,12 @@ export function setupContainer(container: Container): void {
     return new ListFilesCommand(listFilesUseCase, dateFormatter);
   });
 
+  container.registerSingleton(DI_KEYS.LS_COMMAND, () => {
+    const listTasksUseCase = container.resolve<ListTasksUseCase>(DI_KEYS.LIST_TASKS_USE_CASE);
+    const taskFormatter = container.resolve<TaskFormatter>(DI_KEYS.TASK_FORMATTER);
+    return new LsCommand(listTasksUseCase, taskFormatter);
+  });
+
   container.registerSingleton(DI_KEYS.CURRENT_FILE_COMMAND, () => {
     const stateManager = container.resolve<StateManager>(DI_KEYS.STATE_MANAGER);
     const tasksDirectory = container.resolve<string>(DI_KEYS.TASKS_DIRECTORY);
@@ -263,6 +271,7 @@ export function setupContainer(container: Container): void {
   commandRegistry.register(container.resolve<ClearCommand>(DI_KEYS.CLEAR_COMMAND));
   commandRegistry.register(container.resolve<SetFileDateCommand>(DI_KEYS.SET_FILE_DATE_COMMAND));
   commandRegistry.register(container.resolve<ListFilesCommand>(DI_KEYS.LIST_FILES_COMMAND));
+  commandRegistry.register(container.resolve<LsCommand>(DI_KEYS.LS_COMMAND));
   commandRegistry.register(container.resolve<CurrentFileCommand>(DI_KEYS.CURRENT_FILE_COMMAND));
 
   // Command Router

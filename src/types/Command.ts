@@ -5,6 +5,7 @@ export type Command =
   | 'mark-in-progress'
   | 'mark-done'
   | 'list'
+  | 'ls'
   | 'list-files'
   | 'current-file'
   | 'clear'

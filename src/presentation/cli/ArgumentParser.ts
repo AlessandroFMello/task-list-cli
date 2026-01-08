@@ -28,6 +28,7 @@ export class ArgumentParser {
       "delete",
       "mark-in-progress",
       "mark-done",
+      "ls",
       "list",
       "list-files",
       "current-file",
@@ -72,7 +73,9 @@ export class ArgumentParser {
         parsed.uuid = commandArgs[1] as UUID;
         break;
       
+      case "ls":
       case "list":
+      case "ls":
         if (commandArgs.length >= 2) {
           const statusArg = commandArgs[1];
           // Normalize CLI format to internal format

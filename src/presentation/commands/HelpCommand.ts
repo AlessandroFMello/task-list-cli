@@ -17,6 +17,7 @@ Commands:
   mark-in-progress <uuid>              Mark a task as in progress
   mark-done <uuid>                     Mark a task as done
   list [status]                        List all tasks (optionally filter by status)
+  ls [status]                          Alias for list (shorter command)
   list-files                           List all available task files
   current-file                         Show the date of the current task file
   clear                                Clear all tasks
@@ -38,9 +39,9 @@ Examples:
   task mark-in-progress c2a01015-c3c2-4605-930b-cdcaf5ff16ca
   task mark-done c2a01015-c3c2-4605-930b-cdcaf5ff16ca
   task list
+  task ls
   task list done
-  task list in-progress
-  task list todo
+  task ls in-progress
   task list-files
   task current-file
   task clear
