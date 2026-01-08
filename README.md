@@ -284,20 +284,100 @@ If you encounter permission errors:
 
 ## Development
 
+### Architecture
+
+This project follows **Clean Architecture** principles with clear separation of concerns:
+
+#### Architecture Layers
+
+1. **Domain Layer** (`src/domain/`)
+
+   - **Entities**: Core business objects (`Task`)
+   - **Value Objects**: Immutable objects with validation (`TaskStatus`)
+   - **Repositories**: Interfaces for data access (`ITaskRepository`)
+   - **Errors**: Domain-specific error classes
+
+2. **Infrastructure Layer** (`src/infrastructure/`)
+
+   - **File System**: Abstraction over Node.js file system (`IFileSystem`, `NodeFileSystem`)
+   - **Repositories**: Concrete implementations (`FileSystemTaskRepository`)
+   - **State Management**: Persistence of current file selection (`StateManager`)
+   - **Dependency Injection**: Container and setup (`Container`, `setup`)
+
+3. **Use Cases Layer** (`src/use-cases/`)
+
+   - Business logic isolated from presentation and infrastructure
+   - Each use case handles a specific operation (Add, Update, Delete, List, etc.)
+
+4. **Presentation Layer** (`src/presentation/`)
+   - **CLI**: Command-line interface components
+   - **Commands**: Individual command handlers (Command Pattern)
+   - **Formatters**: Display formatting logic
+   - **Argument Parser**: CLI argument parsing
+
+#### Design Principles
+
+- **SOLID Principles**: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion
+- **DRY (Don't Repeat Yourself)**: Shared logic extracted to reusable components
+- **Dependency Injection**: All dependencies injected through constructor
+- **Command Pattern**: Each CLI command is a separate handler class
+- **Repository Pattern**: Data access abstracted through interfaces
+
 ### Project Structure
 
 ```
 task-tracker-cli/
 ├── src/
-│   ├── cli.ts              # Main CLI class
-│   ├── index.ts            # Entry point
+│   ├── index.ts                    # Entry point
+│   ├── domain/                     # Domain Layer
+│   │   ├── entities/              # Domain entities
+│   │   │   └── Task.ts
+│   │   ├── value-objects/         # Value objects
+│   │   │   └── TaskStatus.ts
+│   │   ├── repositories/          # Repository interfaces
+│   │   │   └── ITaskRepository.ts
+│   │   └── errors/                # Domain errors
+│   ├── infrastructure/             # Infrastructure Layer
+│   │   ├── di/                    # Dependency Injection
+│   │   │   ├── Container.ts
+│   │   │   └── setup.ts
+│   │   ├── file-system/           # File system abstraction
+│   │   │   ├── IFileSystem.ts
+│   │   │   └── NodeFileSystem.ts
+│   │   ├── repositories/          # Repository implementations
+│   │   │   └── FileSystemTaskRepository.ts
+│   │   └── state/                 # State management
+│   │       └── StateManager.ts
+│   ├── use-cases/                 # Use Cases Layer
+│   │   ├── AddTaskUseCase.ts
+│   │   ├── UpdateTaskUseCase.ts
+│   │   ├── DeleteTaskUseCase.ts
+│   │   └── ...
+│   ├── presentation/              # Presentation Layer
+│   │   ├── cli/                   # CLI components
+│   │   │   ├── CLI.ts
+│   │   │   ├── CLIFactory.ts
+│   │   │   ├── ArgumentParser.ts
+│   │   │   └── CommandRouter.ts
+│   │   ├── commands/              # Command handlers
+│   │   │   ├── AddCommand.ts
+│   │   │   ├── UpdateCommand.ts
+│   │   │   └── ...
+│   │   └── formatters/            # Display formatters
+│   │       ├── DateFormatter.ts
+│   │       └── TaskFormatter.ts
+│   ├── interfaces/                # TypeScript interfaces
+│   ├── types/                     # Type definitions
+│   ├── helpers/                   # Helper functions
+│   └── tasks/                     # Task JSON files
+├── src/__tests__/                 # Test files
 │   ├── domain/
-│   │   └── task.ts        # Task domain model
-│   ├── helpers/            # Helper functions
-│   ├── interfaces/         # TypeScript interfaces
-│   └── types/              # Type definitions
-├── dist/                   # Compiled JavaScript
-├── src/tasks/              # Task JSON files
+│   ├── infrastructure/
+│   ├── use-cases/
+│   ├── presentation/
+│   ├── integration/
+│   └── edge-cases/
+├── dist/                          # Compiled JavaScript
 └── package.json
 ```
 
@@ -316,6 +396,29 @@ yarn start
 # Or use the compiled version
 node dist/index.js <command>
 ```
+
+### Testing
+
+```bash
+# Run all tests
+yarn test
+
+# Run tests in watch mode
+yarn test:watch
+
+# Run tests with coverage
+yarn test:coverage
+```
+
+### Test Coverage
+
+The project includes comprehensive test coverage:
+
+- **Unit Tests**: Domain, Infrastructure, Use Cases, Presentation layers
+- **Integration Tests**: Complete workflow scenarios
+- **Edge Cases**: Error handling, file operations, corrupted data
+
+Current test count: **182 tests** across all layers.
 
 ---
 

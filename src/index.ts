@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { CLI } from "./cli.js";
+import { CLIFactory } from "./presentation/cli/CLIFactory.js";
 
 async function main(): Promise<void> {
 	try {
-		const cli = new CLI();
+		const cli = CLIFactory.create();
 		const parsedArgs = cli.parseArguments(process.argv);
 		const output = await cli.routeCommand(parsedArgs);
 		console.log(output);
