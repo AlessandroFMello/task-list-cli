@@ -55,16 +55,18 @@ describe("Edge Cases - File Operations", () => {
       const testDate = "2024-01-15";
       const testFilePath = path.join(testTasksDir, `${testDate}-tasks.json`);
       
-      // Create corrupted JSON
+      // Create corrupted JSON file
       writeFileSync(testFilePath, "invalid json content", "utf-8");
 
-      // Try to list tasks (will try to read the corrupted file)
+      // Verify file exists before trying to set file date
+      expect(existsSync(testFilePath)).toBe(true);
+
+      // Setting the file date should work since file exists
       const args: IParsedArgs = {
         command: "set-file-date",
         date: testDate,
       };
 
-      // Setting the file date should work, but reading will fail
       const setDateResult = await cli.routeCommand(args);
       expect(setDateResult).toContain("Switched to tasks file");
 
