@@ -1,7 +1,5 @@
 # Task Tracker CLI
 
-**Project URL:** https://github.com/AlessandroFMello/task-list-cli
-
 A simple command-line interface (CLI) application to track and manage your tasks. Tasks are stored in JSON files organized by date, allowing you to manage tasks for different days.
 
 ## Features
@@ -32,7 +30,12 @@ A simple command-line interface (CLI) application to track and manage your tasks
 
 ### Setup
 
-1. Clone or download this repository
+1. Clone or download this repository:
+
+```bash
+git clone https://github.com/AlessandroFMello/task-list-cli
+```
+
 2. Install dependencies:
 
    ```bash
@@ -50,6 +53,7 @@ A simple command-line interface (CLI) application to track and manage your tasks
    ```
 
 4. Link the CLI command globally (optional):
+
    ```bash
    yarn link
    # or
