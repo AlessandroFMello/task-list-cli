@@ -33,19 +33,19 @@ Status values for list:
   done                                 Show only done tasks
 
 Examples:
-  task add "Buy groceries"
-  task update c2a01015-c3c2-4605-930b-cdcaf5ff16ca "Buy groceries and cook dinner"
-  task delete c2a01015-c3c2-4605-930b-cdcaf5ff16ca
-  task mark-in-progress c2a01015-c3c2-4605-930b-cdcaf5ff16ca
-  task mark-done c2a01015-c3c2-4605-930b-cdcaf5ff16ca
-  task list
-  task ls
-  task list done
-  task ls in-progress
-  task list-files
-  task current-file
-  task clear
-  task set-file-date "2024-06-15"
+  task-cli add "Buy groceries"
+  task-cli update c2a01015-c3c2-4605-930b-cdcaf5ff16ca "Buy groceries and cook dinner"
+  task-cli delete c2a01015-c3c2-4605-930b-cdcaf5ff16ca
+  task-cli mark-in-progress c2a01015-c3c2-4605-930b-cdcaf5ff16ca
+  task-cli mark-done c2a01015-c3c2-4605-930b-cdcaf5ff16ca
+  task-cli list
+  task-cli ls
+  task-cli list done
+  task-cli ls in-progress
+  task-cli list-files
+  task-cli current-file
+  task-cli clear
+  task-cli set-file-date "2024-06-15"
 `;
   }
 }

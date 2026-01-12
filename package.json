@@ -8,7 +8,7 @@
   "license": "ISC",
   "type": "module",
   "bin": {
-    "task": "dist/index.js"
+    "task-cli": "dist/index.js"
   },
   "scripts": {
     "build": "tsc && node ./dist/helpers/addShebang.js",

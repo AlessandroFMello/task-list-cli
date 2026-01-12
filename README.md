@@ -54,7 +54,7 @@ A simple command-line interface (CLI) application to track and manage your tasks
    npm link
    ```
 
-After linking, you can use the `task` command from any directory.
+After linking, you can use the `task-cli` command from any directory.
 
 ---
 
@@ -65,7 +65,7 @@ After linking, you can use the `task` command from any directory.
 #### Add a Task
 
 ```bash
-task add "Buy groceries"
+task-cli add "Buy groceries"
 ```
 
 Output: `Task added successfully (UUID: <uuid>)`
@@ -73,45 +73,45 @@ Output: `Task added successfully (UUID: <uuid>)`
 #### List All Tasks
 
 ```bash
-task list
+task-cli list
 ```
 
 #### List Tasks by Status
 
 ```bash
-task list todo
-task list in-progress
-task list done
+task-cli list todo
+task-cli list in-progress
+task-cli list done
 ```
 
 #### Update a Task
 
 ```bash
-task update <uuid> "Updated description"
+task-cli update <uuid> "Updated description"
 ```
 
 #### Delete a Task
 
 ```bash
-task delete <uuid>
+task-cli delete <uuid>
 ```
 
 #### Mark Task as In Progress
 
 ```bash
-task mark-in-progress <uuid>
+task-cli mark-in-progress <uuid>
 ```
 
 #### Mark Task as Done
 
 ```bash
-task mark-done <uuid>
+task-cli mark-done <uuid>
 ```
 
 #### Clear All Tasks
 
 ```bash
-task clear
+task-cli clear
 ```
 
 ⚠️ This will prompt for confirmation before clearing all tasks.
@@ -123,7 +123,7 @@ task clear
 ### View Current File
 
 ```bash
-task current-file
+task-cli current-file
 ```
 
 Shows the date of the currently selected task file.
@@ -131,7 +131,7 @@ Shows the date of the currently selected task file.
 ### List All Task Files
 
 ```bash
-task list-files
+task-cli list-files
 ```
 
 Lists all available task files with their dates, sizes, and modification dates.
@@ -139,7 +139,7 @@ Lists all available task files with their dates, sizes, and modification dates.
 ### Switch to a Different Date File
 
 ```bash
-task set-file-date "2024-06-15"
+task-cli set-file-date "2024-06-15"
 ```
 
 Switches to the task file for the specified date. The file must already exist.
@@ -147,9 +147,9 @@ Switches to the task file for the specified date. The file must already exist.
 ### Get Help
 
 ```bash
-task
+task-cli
 # or
-task help
+task-cli help
 ```
 
 Displays usage information and all available commands.
@@ -199,51 +199,51 @@ Tasks are stored in JSON files located in `src/tasks/` directory:
 
 ```bash
 # Add a new task
-task add "Buy groceries"
+task-cli add "Buy groceries"
 # Output: Task added successfully (UUID: c2a01015-c3c2-4605-930b-cdcaf5ff16ca)
 
 # List all tasks
-task list
+task-cli list
 
 # Update the task
-task update c2a01015-c3c2-4605-930b-cdcaf5ff16ca "Buy groceries and cook dinner"
+task-cli update c2a01015-c3c2-4605-930b-cdcaf5ff16ca "Buy groceries and cook dinner"
 
 # Mark as in progress
-task mark-in-progress c2a01015-c3c2-4605-930b-cdcaf5ff16ca
+task-cli mark-in-progress c2a01015-c3c2-4605-930b-cdcaf5ff16ca
 
 # Mark as done
-task mark-done c2a01015-c3c2-4605-930b-cdcaf5ff16ca
+task-cli mark-done c2a01015-c3c2-4605-930b-cdcaf5ff16ca
 
 # List only done tasks
-task list done
+task-cli list done
 
 # Delete the task
-task delete c2a01015-c3c2-4605-930b-cdcaf5ff16ca
+task-cli delete c2a01015-c3c2-4605-930b-cdcaf5ff16ca
 ```
 
 ### Working with Different Dates
 
 ```bash
 # Check current file
-task current-file
+task-cli current-file
 # Output: Current task file: 2024-06-15
 
 # List all available files
-task list-files
+task-cli list-files
 # Output:
 # Available task files:
 # 1. 2024-06-15 (500 bytes, modified: 06/15/2024)
 # 2. 2024-06-16 (840 bytes, modified: 06/16/2024)
 
 # Switch to a different date
-task set-file-date "2024-06-16"
+task-cli set-file-date "2024-06-16"
 
 # Verify the switch
-task current-file
+task-cli current-file
 # Output: Current task file: 2024-06-16
 
 # Now all operations will use the 2024-06-16 file
-task add "New task for June 16"
+task-cli add "New task for June 16"
 ```
 
 ---
@@ -263,7 +263,7 @@ If you get a "command not found" error:
 If you get an error about a task file not existing:
 
 - The `set-file-date` command requires the file to already exist
-- Use `task list-files` to see available files
+- Use `task-cli list-files` to see available files
 - Create a task for that date first using the default file (today's date)
 
 ### Permission Errors
