@@ -1,5 +1,7 @@
 # Task Tracker CLI
 
+Sample solution for the [Task Tracker CLI](https://roadmap.sh/projects/task-tracker) challenge from [roadmap.sh](https://roadmap.sh/).
+
 A simple command-line interface (CLI) application to track and manage your tasks. Tasks are stored in JSON files organized by date, allowing you to manage tasks for different days.
 
 ## Features
@@ -32,9 +34,9 @@ A simple command-line interface (CLI) application to track and manage your tasks
 
 1. Clone or download this repository:
 
-```bash
-git clone https://github.com/AlessandroFMello/task-list-cli
-```
+   ```bash
+   git clone https://github.com/AlessandroFMello/task-list-cli
+   ```
 
 2. Install dependencies:
 
